@@ -1,0 +1,30 @@
+n_runs: 10000
+nodes:
+  z:
+    distribution: normal
+    name_md: "*z*"
+    parameters:
+      mean: 0
+      sd: 1
+  alpha:
+    distribution: mvnormal
+    name_md: "&alpha;"
+    parameters:
+      mean: VECTOR(z^2,0.2)
+      covariance: 2 * MATRIX((1,0),(0,1)) + MATRIX((2,0),(0,2))
+  beta:
+    distribution: constant
+    name_md: "&beta;"
+    parameters:
+      location: sum(alpha)
+  xi:
+    distribution: discrete
+    name_md: "&xi;"
+    parameters:
+      locations: VECTOR(1,2)
+  omega:
+    distribution: bootstrap
+    name_md: "&omega;"
+    parameters:
+      data: VECTOR(1,3,1,5,1,3,6,1,2,5,2,6,2,7)
+      statistic: mean

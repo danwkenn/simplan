@@ -1,0 +1,31 @@
+n_runs: 10000
+nodes:
+  alpha:
+    distribution: normal
+    name_md: "&alpha;"
+    parameters:
+      mean: 0.5
+      sd: 1
+  gamma:
+    distribution: normal
+    name_md: "&gamma;"
+    parameters:
+      mean: alpha + sqrt(beta^4 * alpha^2)
+      sd: 1
+  beta:
+    distribution: normal
+    name_md: "&beta;"
+    parameters:
+      mean: alpha
+      sd: 1
+  xi:
+    distribution: constant
+    name_md: "&xi;"
+    parameters:
+      location: alpha^2
+  eta:
+    distribution: gamma
+    name_md: "&eta;"
+    parameters:
+      shape: 3
+      rate: 1
