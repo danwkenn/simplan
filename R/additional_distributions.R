@@ -6,6 +6,15 @@ rconstant <- function(n,location){
   rep(location, n)
 }
 
+#' Uniform distribution
+#' @param n Number of draws.
+#' @param lower Lower limit.
+#' @param upper Upper limit.
+#' @export
+runiform <- function(n, lower, upper){
+  runif(n, lower, upper)
+}
+
 #' Multivariate normal:
 #' @param n Number of draws.
 #' @param mean vector mean.
@@ -40,8 +49,9 @@ r_dists <- c(
   constant = "constant",
   mvnormal = "mvnorm",
   discrete = "discrete",
-  bootstrap = "bootstrap")
+  bootstrap = "bootstrap",
+  uniform = "uniform")
 
-simplan_dists <- c("mvnorm")
+simplan_dists <- c("mvnorm", "bootstrap","discrete","uniform")
 
 

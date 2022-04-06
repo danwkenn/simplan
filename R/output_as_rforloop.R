@@ -13,14 +13,28 @@ output_as_rforloop <- function(file, plan, add_nsims = TRUE){
     data.table::data.table(
       name = names(plan$nodes),
       distribution = sapply(plan$nodes, function(x){x$distribution}),
-      parameters = lapply(plan$nodes, function(x){x[["parameters"]]})
+      parameters = lapply(plan$nodes, function(x){x[["parameters"]]}),
+      contortion = lapply(plan$nodes, function(x){x[["contortion"]]})
     )
 
-  plan_dt$inputs <- lapply(extract_variables_2.Internal,X = plan_dt$parameters)
+  # Determine the inputs for each node:
+  inputs <- list()
+  for(i in 1:nrow(plan_dt)){
+    if(!is.null(plan_dt$contortion[[i]])){
+      inputs[[i]] <- extract_variables_2.Internal(
+        do.call("c",c(plan_dt$parameters[[i]],
+                      do.call("c", do.call("c",(lapply(1:length(plan_dt$contortion[[i]]),
+                                                       FUN = function(j){plan_dt$contortion[[i]][[j]]$parameters}))))
+        )))
+    }else{
+      inputs[[i]] <- extract_variables_2.Internal(plan_dt$parameters[[i]])
+    }
+  }
 
-  score <- rep(NA, nrow(plan_dt))
-  arguments <- do.call("c",lapply(plan_dt$inputs, unique))
-  plan_dt$order <- order(-sapply(plan_dt$name, function(x){sum(x == arguments)}))
+  plan_dt$inputs <- inputs
+
+  score <- sapply(plan_dt$name,FUN = add_count, plan_dt = plan_dt)
+  plan_dt$order <- rank(score,ties.method = "first")
 
   data.table::setkey(plan_dt, order)
   plan_dt$expression <- sapply(X = plan_dt$name,
@@ -31,7 +45,7 @@ output_as_rforloop <- function(file, plan, add_nsims = TRUE){
 
   plan_dt$comment <- paste0("# ", 1:nrow(plan_dt), ". ", plan_dt$name," ----------------")
 
-  plan_dt$instantiate <- paste0(plan_dt$name," <- list(NA,n_runs)")
+  plan_dt$instantiate <- paste0(plan_dt$name," <- list()")
 
   sink(file = file)
 

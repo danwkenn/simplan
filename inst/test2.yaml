@@ -1,11 +1,28 @@
 n_runs: 10000
 nodes:
+  a:
+    distribution: discrete
+    name_md: "*a*"
+    parameters:
+      locations: VECTOR(2,3)
   z:
     distribution: normal
     name_md: "*z*"
     parameters:
       mean: 0
       sd: 1
+    contortion:
+      con1:
+        type: truncation
+        parameters:
+          minimum: 0
+          maximum: a
+  g:
+    distribution: uniform
+    name_md: "*g*"
+    parameters:
+      lower: 0
+      upper: 1
   alpha:
     distribution: mvnormal
     name_md: "&alpha;"
