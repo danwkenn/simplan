@@ -1,0 +1,46 @@
+nodes:
+  beta:
+    distribution: mvnormal
+    parameters:
+      mean: VECTOR(1,2,3,4,5)
+      covariance: DIAGONAL(1,1,1,1,1)
+  alpha:
+    type: SEQUENCE
+    length: 5
+    index: i
+    distribution: normal
+    parameters:
+      mean: alpha[i-1] + alpha[i-2] + beta[i]
+      sd: 1
+    initials:
+      - index: 1
+        distribution: normal
+        parameters:
+          mean: 0
+          sd: 1
+      - index: 2
+        distribution: normal
+        parameters:
+            mean: alpha[1] + beta[1]
+            sd: 1
+  gamma:
+    type: SEQUENCE
+    length: 5
+    index: i
+    distribution: normal
+    parameters:
+      mean: gamma[i-1] + alpha[i]
+      sd: 1
+    initials:
+      p1:
+        index: 1
+        distribution: normal
+        parameters:
+          mean: 0
+          sd: 1
+      p2:
+        index: 2
+        distribution: normal
+        parameters:
+            mean: gamma[1] + beta[1]
+            sd: 1
