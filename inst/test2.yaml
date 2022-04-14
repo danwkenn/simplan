@@ -12,8 +12,7 @@ nodes:
       mean: 0
       sd: 1
     contortion:
-      con1:
-        type: truncation
+      - type: truncation
         parameters:
           minimum: 0
           maximum: a
