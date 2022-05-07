@@ -22,6 +22,7 @@ listify <- function(string){
 combine <- function(list, type){
   switch(type,
          MATRIX = glue::glue("rbind({paste0(unlist(list), collapse = ',')})"),
+         DIAGONAL = glue::glue("diag({list[[1]]})"),
          VECTOR = list[[1]])
 }
 

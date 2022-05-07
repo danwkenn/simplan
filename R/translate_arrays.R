@@ -8,7 +8,7 @@ get_first_bracket_end <- function(x){
   which(cumsum(coding) == 0)[[1]]
 }
 
-array_types <- c("VECTOR","MATRIX")
+array_types <- c("VECTOR","MATRIX", "DIAGONAL")
 
 #' Identify all substrings of the form MATRIX|VECTOR(...)
 #' @param string String of simplan code to be translated into R.

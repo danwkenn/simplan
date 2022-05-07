@@ -1,0 +1,32 @@
+n_runs: 10
+nodes:
+  alpha:
+    type: SEQUENCE
+    length: 100
+    index: i
+    distribution: normal
+    parameters:
+      mean: 0.8 * alpha[i-1] + 0.1 * alpha[i-2]
+      sd: 1
+    initials:
+      - index: 1
+        distribution: normal
+        parameters:
+          mean: 0
+          sd: 1
+      - index: 2
+        distribution: normal
+        parameters:
+            mean: 0.8 * alpha[1]
+            sd: 1
+  a:
+    distribution: discrete
+    name_md: "*a*"
+    parameters:
+      locations: VECTOR(2,3)
+  b:
+    distribution: mvnormal
+    name_md: "*b*"
+    parameters:
+      mean: VECTOR(0.7,0.2)
+      covariance: 2 * MATRIX((1,0),(0,1)) + MATRIX((2,0),(0,2))

@@ -1,3 +1,4 @@
+n_runs: 30
 nodes:
   beta:
     distribution: mvnormal
@@ -61,8 +62,7 @@ nodes:
       mean: 0
       sd: 1
     contortion:
-      con1:
-        type: truncation
+      - type: truncation
         parameters:
           minimum: 0
           maximum: a
@@ -96,7 +96,7 @@ nodes:
     parameters:
       mean: theta[i-1] + alpha[i]
       sd: 1
-    initials:N %>%
+    initials:
       - index: 1
         distribution: normal
         parameters:

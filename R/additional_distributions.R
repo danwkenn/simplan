@@ -12,7 +12,7 @@ rconstant <- function(n,location){
 #' @param upper Upper limit.
 #' @export
 runiform <- function(n, lower, upper){
-  runif(n, lower, upper)
+  stats::runif(n, lower, upper)
 }
 
 #' Multivariate normal:

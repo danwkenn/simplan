@@ -1,0 +1,17 @@
+normal:
+  parameters:
+    mean:
+      type: real
+      dimension: 0
+      description: "Location parameter specifying the center of the distribution."
+      minimum: -Inf
+      maximum: +Inf
+    sd:
+      type: real
+      dimension: 0
+      description: "Scale parameter specifying the width of the distribution around the mean."
+      minimum: 0
+      maximum: +Inf
+  domain: real
+  minimum: -Inf
+  maximum: +Inf

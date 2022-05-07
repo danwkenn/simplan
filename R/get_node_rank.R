@@ -32,7 +32,7 @@ name_grep_pattern <- "(?:\\.|[a-z,A-Z])_*(?:\\.|_|[a-z,A-Z,0-9])*"
 #'
 #' @param node_inputs A list of character vectors with each of the inputs into the node.
 #' @param nodes Names of the nodes in the list.
-#' @examples
+#' @example
 #' node_inputs <- list(
 #'   alpha = c("pi","f", "alpha"),
 #'   beta = c("alpha","epsilon"),
