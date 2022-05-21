@@ -12,6 +12,10 @@ LazyData: true
 RoxygenNote: 7.1.1
 Imports: 
     data.table,
+    ggplot2,
     glue,
+    graphics,
     MASS,
+    stats,
+    visNetwork,
     yaml

@@ -42,3 +42,18 @@ plan <- unbake_plan(plan)
 plan <- bake_plan(plan)
 ```
 
+## Visualising
+
+```{r}
+plan <- read_simplan(file = 'inst/test_seq.yml')
+plan <- bake_plan(plan)
+
+plot_simulation_DAG(plan)
+
+plan_viz <- visualise_node_network(plan)
+visNetwork::visHierarchicalLayout(
+  plan_viz,
+  sortMethod = "directed",
+  direction = "LR")
+```
+

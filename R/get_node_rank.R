@@ -32,14 +32,14 @@ name_grep_pattern <- "(?:\\.|[a-z,A-Z])_*(?:\\.|_|[a-z,A-Z,0-9])*"
 #'
 #' @param node_inputs A list of character vectors with each of the inputs into the node.
 #' @param nodes Names of the nodes in the list.
-#' @example
+#' @examples
 #' node_inputs <- list(
 #'   alpha = c("pi","f", "alpha"),
 #'   beta = c("alpha","epsilon"),
 #'   delta = c("d","beta"),
 #'   epsilon = c("2")
 #' )
-#' get_node_rank(node_inputs)
+#' simplan:::get_node_rank(node_inputs)
 get_node_rank <- function(node_inputs, nodes = names(node_inputs)){
   rank(sapply(nodes,
               FUN = get_node_count.Internal,

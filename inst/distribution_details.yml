@@ -1,4 +1,6 @@
 normal:
+  description: "Continuous unbounded distribution (also called Gaussian distribution)."
+  latex_pdf: "$$\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\\text{exp}{\\left[-\\frac{1}{2\\sigma^2}\\left(x-\\mu\\right)^2\\right]}$$"
   parameters:
     mean:
       type: real
