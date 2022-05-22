@@ -21,5 +21,5 @@ node_inputs <- list(
   delta = c("d","beta"),
   epsilon = c("2")
 )
-get_node_rank(node_inputs)
+simplan:::get_node_rank(node_inputs)
 }

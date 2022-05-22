@@ -9,10 +9,9 @@
 
 # Next Steps
 
-1. Function for translating sequence nodes
-2. Function for translating sequence chunks into internal for loops.
-3. Function for translating sequence initials
-4. Function for printing code to R.
+1. Build shiny app prototype for UI to build a simplan.
+2. Create a bake/unbake/serve schema for the simplan pipeline.
+3. Create a scaffold of rule-checking functions for controlling simplan creation.
 
 ```{r}
 plan <- read_simplan(file = 'inst/test_seq.yml')

@@ -17,3 +17,22 @@ normal:
   domain: real
   minimum: -Inf
   maximum: +Inf
+gamma:
+  description: "Continuous positive distribution."
+  latex_pdf: "$$\\frac{\\beta^\\alpha}{\\Gamma{\\left(\\alpha\\right)}}\\text{exp}{\\left[-\\beta x\\right]}$$"
+  parameters:
+    shape:
+      type: real
+      dimension: 0
+      description: "Parameter affecting the shape of the distribution (not just location/scale)."
+      minimum: 0
+      maximum: +Inf
+    rate:
+      type: real
+      dimension: 0
+      description: "Parameter specifying the degree of tail decay."
+      minimum: 0
+      maximum: +Inf
+  domain: real
+  minimum: 0
+  maximum: +Inf
